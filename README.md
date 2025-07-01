@@ -1,60 +1,48 @@
-#Analysis of CpG Methylation Differences Between Healthy and Diseased States
+#  Analysis of CpG Methylation Differences Between Healthy and Diseased States
 
-This repository contains the R script developed for analyzing differential methylation between healthy and diseased samples using Illumina DNA methylation array data.
+This repository contains an R script to analyze differential DNA methylation using Illumina HumanMethylation450k array data, comparing healthy and diseased samples.
 
-##Files:
-analysis.R: Main R script performing the full methylation analysis pipeline
+## Files
 
-##Project Summary
-DNA methylation analysis to detect CpG sites that show significant differences between healthy and diseased individuals. The steps in the pipeline include:
+- `analysis.R` – Main R script that runs the complete methylation analysis pipeline.
 
-- Quality control of samples and probes
+## Project Overview
 
-- Normalization using preprocessQuantile
+This project aims to identify CpG sites that are differentially methylated between healthy and diseased individuals. The steps include:
 
-- Filtering based on detection p-values
+- Sample and probe quality control  
+- Detection p-value filtering (threshold: 0.05)  
+- Quantile normalization (`preprocessQuantile`)  
+- Statistical testing using **t-tests**  
+- Visualization of differential methylation results
 
-- Differential methylation analysis using t-tests
+## Tools & Packages
 
-- Visualization of results (e.g., heatmaps, volcano plots)
+Developed in **R** using **Bioconductor** packages:
 
-##Tools & Packages:
-R / RStudio
+- `minfi`  
+- `gplots`  
+- `qqman`  
+- `IlluminaHumanMethylation450kmanifest`
 
-###Bioconductor packages:
+## How to Run the Analysis
 
-- minfi
+1. Clone the repository:
+2. Place your raw IDAT files or methylation matrix into the working directory.
+3. Open `analysis.R` in RStudio.
+4. Install missing packages (if any).
+5. Modify file paths and sample group labels as needed.
+6. Run the script to execute the full pipeline.
 
-- gplots
+## Visualizations Generated
 
-- qqman
+The script will generate the following plots:
 
-- IlluminaHumanMethylation450kmanifest
+- Density plots of Beta and M values (raw vs normalized)  
+- 6-panel quality control plot  
+- PCA plots colored by group, sex, and Sentrix ID  
+- Boxplots of p-values (raw, uncorrected, corrected)  
+- Volcano plot of significant CpG sites  
+- Manhattan plot of genome-wide results  
+- Heatmap with hierarchical clustering of top differentially methylated probes
 
-##Pipeline:
-
-- Clone the repository
-
-- Place your raw data
-
-- Install required R packages and input files
-
-- Run the analysis
-
-##Visualizations
-
-The script generates several plots, which will appear in your R graphics device:
-
-- Density plots of raw Beta and M values for different groups.
-
-- 6-panel QC plot comparing raw and normalized data.
-
-- PCA plots colored by group, sex, and Sentrix ID.
-
-- Boxplots of raw, uncorrected, and corrected p-values.
-
-- Volcano plots highlighting significant probes.
-
-- Manhattan plots showing genomic significance.
-
-- Heatmaps with hierarchical clustering.
