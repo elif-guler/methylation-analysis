@@ -51,7 +51,7 @@ qc
 plotQC(qc)
 
 
-# Calculate detection p-values (use threshold = 0.05 for Group 7)
+# Calculate detection p-values
 detP <- detectionP(RGset)
 failed_positions <- detP > 0.05
 print(failed_positions)
@@ -288,7 +288,7 @@ library(qqman)
 
 load("final_ttest_reduced.RData")
 # First we have to annotate our dataframe, that is add genome annotation information for each cpg probe. We will use the Illumina450Manifest_clean object that we previously created:
-load('~/Dropbox/DRD_2025/2/Illumina450Manifest_clean.RData')
+load('~/Illumina450Manifest_clean.RData')
 
 # We will use the merge() function to merge the final_ttest_corrected with the Illumina450Manifest_clean object
 ?merge
